@@ -1,19 +1,24 @@
-# IKIGAI - Ather Ignition 1.0 
+# IKIGAI - Ather Ignition 1.0 🚀 | IoT Smart Helmet
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
 ![Event](https://img.shields.io/badge/Hackathon-Ather_Ignition_1.0-ea5d24.svg)
+![Domain](https://img.shields.io/badge/Domain-IoT_%7C_Rider_Safety-2ea44f.svg)
 
-Welcome to **IKIGAI**, a project developed for the **Ather Ignition 1.0** hackathon. This repository contains a streamlined Python-based pipeline designed for real-time data ingestion and classification. 
+Welcome to **IKIGAI**, an IoT Smart Helmet prototype developed for the **Ather Ignition 1.0** hackathon. This repository contains the Python-based backend pipeline designed to ingest real-time hardware sensor data from the helmet, classify rider events, and ensure enhanced rider safety.
 
-## Repository Structure
+## 💡 Project Overview
+The IKIGAI smart helmet bridges the gap between the rider and the vehicle. By continuously monitoring hardware sensors embedded in the helmet, this pipeline analyzes the rider's state and detects critical events (e.g., impact detection, helmet usage verification, or behavioral classification) in real-time.
 
-The project is modularized into three core Python scripts, keeping the data processing, machine learning classification, and execution logic distinct:
+## 📁 System Architecture
 
-* **`listener.py`** The data ingestion engine. This module is responsible for listening to incoming streams—whether that is real-time EV telemetry, sensor data, or external API inputs—and preparing the raw data for processing.
+The software is structured into three core Python modules that handle the flow from raw IoT sensor data to classified safety alerts:
+
+* **`listener.py` (Data Ingestion)** The data acquisition engine. This script actively listens to the incoming telemetry streams from the helmet's IoT sensors (such as accelerometers, gyroscopes, or microcontrollers like ESP32/Arduino via serial/Bluetooth). It handles raw data formatting and buffering.
   
-* **`console_classification.py`** The core analytical module. It processes the data captured by the listener, applies classification logic, and outputs categorized results or predictions directly to the console. 
+* **`console_classification.py` (Event Classification)** The brain of the system. It processes the cleaned sensor data passed from the listener and applies classification logic. Whether using threshold-based rules or machine learning models, it identifies specific states like crash impacts, sudden braking, or simply confirming the helmet is being worn correctly, outputting these alerts to the console.
   
-* **`main.py**` The central application script. It orchestrates the workflow by linking the `listener.py` feed with the `console_classification.py` logic, running the continuous loop required for the system.
+* **`main_app.py` (Application Orchestrator)** The central loop. It initializes the connection to the helmet, ties the `listener.py` feed into the `console_classification.py` engine, and maintains the continuous real-time monitoring required for rider safety.
+
 
 ## Installation & Setup
 
